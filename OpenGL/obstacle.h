@@ -44,21 +44,21 @@ public:
 		}
 		return (p2.y - p1.y) / (p2.x - p1.x);
 	}
-	bool isEqual(Obstacle other) {
+	bool isEqual(Obstacle obstacle) {
 		bool ret = false;
-		if (p1.x == other.p1.x)
+		if (p1.x == obstacle.p1.x)
 		{
-			if (p1.y == other.p1.y)
+			if (p1.y == obstacle.p1.y)
 			{
-				if (p2.x == other.p2.x)
+				if (p2.x == obstacle.p2.x)
 				{
-					if (p2.y == other.p2.y)
+					if (p2.y == obstacle.p2.y)
 					{
-						if (colour.r == other.colour.r)
+						if (colour.r == obstacle.colour.r)
 						{
-							if (colour.g == other.colour.g)
+							if (colour.g == obstacle.colour.g)
 							{
-								if (colour.b == other.colour.b)
+								if (colour.b == obstacle.colour.b)
 								{
 									ret = true;
 								}
@@ -145,8 +145,8 @@ vector<Obstacle> splitIntersectedObs(vector<Obstacle> obs)
 		for (int j = i; j < obs.size(); j++) //initialise j as i as that previous value of i for j has already been checked against (change from j = 0 to j = i for optimisation and stops addind more than necessary obs)
 		{
 			//if obs[i] and obs[j] intersect, splitem
-			GLfloat m1 = (obs[i].p2.y - obs[i].p1.y) / (obs[i].p2.x - obs[i].p1.x);
-			GLfloat m2 = (obs[j].p2.y - obs[j].p1.y) / (obs[j].p2.x - obs[j].p1.x);
+			GLfloat m1 = obs[i].GetM();
+			GLfloat m2 = obs[j].GetM();
 			GLfloat c1 = obs[i].GetC();
 			GLfloat c2 = obs[j].GetC();
 

@@ -63,7 +63,7 @@ int main(void)
 	obs.push_back(Obstacle(Coordinate(3, 4), Coordinate(6, 2), Colour(1, 0, 0)));
 	obs.push_back(Obstacle(Coordinate(6, 7), Coordinate(5, 5), Colour(0, 0, 1)));
 
-	obs = BSP(obs, player.position);
+	//obs = BSP(obs, player.position);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
