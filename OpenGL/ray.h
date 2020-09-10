@@ -188,7 +188,7 @@ vector<Obstacle> BinarySpacePartioningOld(vector<Obstacle> obIn, Coordinate rela
 		float b1c = relativePoint.y - b1m * relativePoint.x;
 		float b2c = relativePoint.y - b2m * relativePoint.x;
 		Coordinate b1inter = IntersectionPoint(b1m, b1c, obIn[i].GetM(), obIn[i].GetC());
-		Coordinate b2inter = IntersectionPoint(b2m, b2c, obIn[i].GetM(), obIn[i].GetC());
+		Coordinate b2inter = IntersectionPoint(b2m, b2c, obIn[i].GetM(), obIn[i].GetC()); 
 
 		if (b1inter.x < max(obIn[i].p1.x, obIn[i].p2.x) && b1inter.x > min(obIn[i].p1.x, obIn[i].p2.x))
 		{

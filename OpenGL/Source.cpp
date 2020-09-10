@@ -68,8 +68,6 @@ int main(void)
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
-		cout<<obs.size()<<endl;
-
 		player.ClampRotation();
 		player.HandleInput(window);
 
@@ -77,14 +75,14 @@ int main(void)
 
 		GLfloat* columnBrightnesses = new GLfloat[SCREEN_WIDTH];
 		GLfloat* columnHeights = new GLfloat[SCREEN_WIDTH];
-		GLfloat* rs = new GLfloat[SCREEN_WIDTH];
-		GLfloat* bs = new GLfloat[SCREEN_WIDTH];
-		GLfloat* gs = new GLfloat[SCREEN_WIDTH];
+		GLfloat* reds = new GLfloat[SCREEN_WIDTH];
+		GLfloat* blues = new GLfloat[SCREEN_WIDTH];
+		GLfloat* greens = new GLfloat[SCREEN_WIDTH];
 		Colour* cs = new Colour[SCREEN_WIDTH];
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindTexture(GL_TEXTURE_2D, 0);
 
 		glColor3f(0, 1, 0);
 
@@ -121,9 +119,9 @@ int main(void)
 			hitInfo = r.CastToObs(obs);
 			columnBrightnesses[(int)j] = 50 / pow(hitInfo.dist, 2);
 			columnHeights[(int)j] = 1250 / hitInfo.dist;
-			rs[int(j)] = hitInfo.hit.colour.r;
-			gs[int(j)] = hitInfo.hit.colour.g;
-			bs[int(j)] = hitInfo.hit.colour.b;
+			reds[int(j)] = hitInfo.hit.colour.r;
+			greens[int(j)] = hitInfo.hit.colour.g;
+			blues[int(j)] = hitInfo.hit.colour.b;
 
 			//cs[int(j)] = hitInfo.hit.colour;
 		}
@@ -150,7 +148,7 @@ int main(void)
 
 		for (double i = 0; i < SCREEN_WIDTH; i++)
 		{
-			glColor3f(min(rs[(int)i], columnBrightnesses[(int)i] * rs[(int)i]), min(gs[(int)i], columnBrightnesses[(int)i] * gs[(int)i]), min(bs[(int)i], columnBrightnesses[(int)i] * bs[(int)i]));
+			glColor3f(min(reds[(int)i], columnBrightnesses[(int)i] * reds[(int)i]), min(greens[(int)i], columnBrightnesses[(int)i] * greens[(int)i]), min(blues[(int)i], columnBrightnesses[(int)i] * blues[(int)i]));
 
 			Coordinate bl = Coordinate(i / SCREEN_WIDTH, 0);
 			Coordinate br = Coordinate((i + 1) / SCREEN_WIDTH, 0);
